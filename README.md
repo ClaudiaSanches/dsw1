@@ -24,8 +24,8 @@
 
     SE SOBRAR TEMPO:
         TODO - CNPJ não está sendo lido do banco de dados
-        TODO - Erro ao editar agência que possui pacotes cadastrados (provavelmente tem que atualizar os pacotes também?)
-        TODO - Erro ao remover agências que possuem pacotes cadastrados (talvez tenha que adicionar CONSTRAINT na criação do banco de dados ou algo do tipo)
+        TODO - Erro ao editar agência que possui pacotes cadastrados (provavelmente tem que atualizar os pacotes também? - mas não tem um ON UPDATE CASCADE no Derby)
+        DONE - Erro ao remover agências que possuem pacotes cadastrados (adicionado ON DELETE CASCADE na criação do pacote no banco de dados)
 
 <h2>R3:</h2> 
     <h3>Cadastro de pacotes turísticos para venda (requer login da agência via e-mail + senha). Depois de fazer login, a agência de turismo pode cadastrar um pacote turístico para venda. O cadastro de pacotes turísticos deve possuir os seguintes dados: CNPJ da agência de turismo, destinos (cidade/estado/país), data de partida, duração (em dias), valor, fotos (no máximo 10 imagens) dos locais turísticos a serem visitados. Por fim, é necessária, no cadastro, a descrição (arquivo PDF) com o roteiro detalhado do pacote turístico.</h3>
