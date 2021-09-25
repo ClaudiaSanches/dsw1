@@ -68,7 +68,7 @@ public class  Usuario {
 	}
 
 	/* Construtores AGENCIA */
-	public Usuario(String email, String senha, String nome, String papel, String cpnj, String descricao) {
+	public Usuario(String email, String senha, String nome, String papel, String cnpj, String descricao) {
 		super();
 		this.email = email;
 		this.senha = senha;
@@ -78,7 +78,7 @@ public class  Usuario {
 		this.descricao = descricao;
 	}
 
-	public Usuario(Long id, String email, String senha, String nome, String papel, String cpnj, String descricao) {
+	public Usuario(Long id, String email, String senha, String nome, String papel, String cnpj, String descricao) {
 		super();
 		this.id = id;
 		this.email = email;
