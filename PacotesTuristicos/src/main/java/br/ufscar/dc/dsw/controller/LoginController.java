@@ -13,8 +13,8 @@ import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.util.Erro;
 
-@WebServlet(name = "Index", urlPatterns = { "/log.jsp", "/logout.jsp" })
-public class IndexController extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = { "/log.jsp", "/logout.jsp" })
+public class LoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +23,7 @@ public class IndexController extends HttpServlet {
 		if (request.getParameter("bOK") != null) {
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
+
 			if (login == null || login.isEmpty()) {
 				erros.add("Login não informado!");
 			}
