@@ -20,13 +20,9 @@ public class IndexController extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Erro erros = new Erro();
-		System.out.println("Uhul! Estamos no IndexController");
 		if (request.getParameter("bOK") != null) {
-			System.out.println("bOK");
 			String login = request.getParameter("login");
 			String senha = request.getParameter("senha");
-			System.out.println("Login: " + login);
-			System.out.println("Senha: " + senha);
 			if (login == null || login.isEmpty()) {
 				erros.add("Login não informado!");
 			}
@@ -38,7 +34,6 @@ public class IndexController extends HttpServlet {
 				Usuario usuario = dao.getbyLogin(login);
 				if (usuario != null) {
 					if (usuario.getSenha().equalsIgnoreCase(senha)) {
-						System.out.println("Achou o usuario");
 						request.getSession().setAttribute("usuarioLogado", usuario);
 						if (usuario.getPapel().equals("ADMIN")) {
 							response.sendRedirect("admin/");
