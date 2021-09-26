@@ -1,3 +1,11 @@
+<!--
+	Página inicial:
+		- apresenta todos os pacotes do banco de dados (nao requer autenticacao)
+		- filtra os pacotes por agencia, destino ou partida
+		- link para login
+		- link para página inicial
+-->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -12,7 +20,8 @@
 			<%
 				String contextPath = request.getContextPath().replace("/", "");
 			%>
-			<a href="login.jsp"><fmt:message key="homepage.login"/></a>
+			<a href="login.jsp"><fmt:message key="homepage.login"/></a><br/>
+			<a href="index.jsp"><fmt:message key="homepage"/></a>
 			<div align="center">
 				<h1><fmt:message key="trip.title"/></h1>
 			</div>
@@ -49,6 +58,22 @@
 					</c:forEach>
 				</table>
 			</div>
+			<h3><fmt:message key="trip.filter"/></h3>
+			<fmt:message key="trip.filter.agency"/><br/>
+			<c:forEach var="agencia" items="${requestScope.listaAgencias}">
+				&emsp;<a href="/<%=contextPath%>/listaPacotes?agencia=${agencia}">
+						<c:out value="${agencia}"/></a><br/>
+			</c:forEach>
+			<fmt:message key="trip.filter.location"/><br/>
+			<c:forEach var="destino" items="${requestScope.listaDestinos}">
+				&emsp;<a href="/<%=contextPath%>/listaPacotes?destino=${destino}">
+						<c:out value="${destino}"/></a><br/>
+			</c:forEach>
+			<fmt:message key="trip.filter.departure"/><br/>
+			<c:forEach var="partida" items="${requestScope.listaPartidas}">
+				&emsp;<a href="/<%=contextPath%>/listaPacotes?partida=${partida}">
+						<c:out value="${partida}"/></a><br/>
+			</c:forEach>
 		</body>
 	</fmt:bundle>
 </html>
