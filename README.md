@@ -23,8 +23,8 @@
         DONE - Remover agências do banco de dados
 
     SE SOBRAR TEMPO:
-        TODO - CNPJ não está sendo lido do banco de dados
-        TODO - Erro ao editar agência que possui pacotes cadastrados (provavelmente tem que atualizar os pacotes também? - mas não tem um ON UPDATE CASCADE no Derby)
+        DONE - CNPJ não está sendo lido do banco de dados
+        DONE - Erro ao editar agência que possui pacotes cadastrados
         DONE - Erro ao remover agências que possuem pacotes cadastrados (adicionado ON DELETE CASCADE na criação do pacote no banco de dados)
 
 <h2>R3:</h2> 
