@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import br.ufscar.dc.dsw.domain.Pacote;
 import br.ufscar.dc.dsw.domain.Usuario;
@@ -47,7 +48,7 @@ public class PacoteDAO extends GenericDAO {
 
     /* 
     	R -> read 
-	  	Lista todos os pacotes turisticos do banco de dados
+	  	Lista os pacotes turisticos do banco de dados
 	*/
     public List<Pacote> getAllPacotes() {
 
@@ -90,6 +91,8 @@ public class PacoteDAO extends GenericDAO {
         return lista;
     }
 
+    // TALVEZ DE PRA TIRAR ESSE AQUI
+    // Retorna todos os pacotes de uma agencia, dado o usuario logado
     public List<Pacote> getAllPacotesAgencia(Usuario usuario) {
 
         List<Pacote> lista = new ArrayList<>();
@@ -121,6 +124,142 @@ public class PacoteDAO extends GenericDAO {
                 String descricao = resultSet.getString("descricao");
                 Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
                 Pacote pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
+                lista.add(pacote);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+
+    // Retorna todos os pacotes, filtrando pelo nome da agencia
+    public List<Pacote> getAllPacotesPorAgencia(String agencia_nome) {
+
+        List<Pacote> lista = new ArrayList<>();
+
+        String sql = "SELECT * from Pacote p, Usuario u WHERE u.nome = ? AND p.cnpj = u.cnpj";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, agencia_nome);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String cnpj = resultSet.getString("cnpj");
+                String cidade = resultSet.getString("cidade");
+                String estado = resultSet.getString("estado");
+                String pais = resultSet.getString("pais");
+                Date partida = resultSet.getDate("partida");
+                Integer duracao = resultSet.getInt("duracao");
+                Float valor = resultSet.getFloat("valor");
+                long agencia_id = resultSet.getLong(10);
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String papel = resultSet.getString("papel");
+                String descricao = resultSet.getString("descricao");
+                Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
+                Pacote pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
+                lista.add(pacote);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+    
+    // Retorna todos os pacotes, filtrando pelo destino
+    public List<Pacote> getAllPacotesPorDestino(String destino) {
+        Pacote pacote = null;
+
+        List<Pacote> lista = new ArrayList<>();
+
+        String[] destinoString = destino.split(","); 
+        String cidade = destinoString[0];
+
+        String sql = "SELECT * from Pacote p, Usuario u WHERE p.cidade = ? AND p.cnpj = u.cnpj";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, cidade);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String cnpj = resultSet.getString("cnpj");
+                String estado = resultSet.getString("estado");
+                String pais = resultSet.getString("pais");
+                Date partida = resultSet.getDate("partida");
+                Integer duracao = resultSet.getInt("duracao");
+                Float valor = resultSet.getFloat("valor");
+                long agencia_id = resultSet.getLong(10);
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String agencia_nome = resultSet.getString(13);
+                String papel = resultSet.getString("papel");
+                String descricao = resultSet.getString("descricao");
+                Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
+                pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
+                lista.add(pacote);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+
+    public List<Pacote> getAllPacotesPorPartida(String partida) {
+
+        List<Pacote> lista = new ArrayList<>();
+
+        String sql = "SELECT * from Pacote p, Usuario u WHERE p.partida = ? AND p.cnpj = u.cnpj";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            Date data = null;
+
+            try {
+                data = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(partida).getTime());
+            } catch (Exception e) {
+            }
+
+            statement.setDate(1, data);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String cnpj = resultSet.getString("cnpj");
+                String cidade = resultSet.getString("cidade");
+                String estado = resultSet.getString("estado");
+                String pais = resultSet.getString("pais");
+                Integer duracao = resultSet.getInt("duracao");
+                Float valor = resultSet.getFloat("valor");
+                long agencia_id = resultSet.getLong(10);
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String agencia_nome = resultSet.getString(13);
+                String papel = resultSet.getString("papel");
+                String descricao = resultSet.getString("descricao");
+                Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
+                Pacote pacote = new Pacote(id, nome, agencia, cidade, estado, pais, data, duracao, valor);
                 lista.add(pacote);
             }
 
@@ -225,5 +364,192 @@ public class PacoteDAO extends GenericDAO {
             throw new RuntimeException(e);
         }
         return pacote;
+    }
+
+    public List<String> getAllDestinos() {
+
+        List<String> lista = new ArrayList<>();
+
+        String sql = "SELECT cidade, estado, pais from Pacote";
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                String cidade = resultSet.getString("cidade");
+                String estado = resultSet.getString("estado");
+                String pais = resultSet.getString("pais");
+                String destino = cidade + ", " + estado + " - " + pais;
+                lista.add(destino);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+
+    public List<String> getAllPartidas() {
+
+        List<String> lista = new ArrayList<>();
+
+        String sql = "SELECT partida from Pacote";
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                lista.add(resultSet.getString("partida"));
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+
+    public List<Pacote> getPacotesPorAgencia(String agencia_nome) {
+        System.out.println("Agência: " + agencia_nome);
+        Pacote pacote = null;
+
+        List<Pacote> lista = new ArrayList<>();
+
+        String sql = "SELECT * from Pacote p, Usuario u WHERE u.nome = ? AND p.cnpj = u.cnpj";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, agencia_nome);
+
+            System.out.println("sql query: " + sql);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String cnpj = resultSet.getString("cnpj");
+                String cidade = resultSet.getString("cidade");
+                String estado = resultSet.getString("estado");
+                String pais = resultSet.getString("pais");
+                Date partida = resultSet.getDate("partida");
+                Integer duracao = resultSet.getInt("duracao");
+                Float valor = resultSet.getFloat("valor");
+                long agencia_id = resultSet.getLong(10);
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String papel = resultSet.getString("papel");
+                String descricao = resultSet.getString("descricao");
+                Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
+                pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
+                lista.add(pacote);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+
+    public List<Pacote> getPacotesPorDestino(String destino) {
+        Pacote pacote = null;
+
+        List<Pacote> lista = new ArrayList<>();
+
+        String[] destinoString = destino.split(" "); 
+        String cidade = destinoString[0];
+        String estado = destinoString[2];
+        String pais = destinoString[4];
+
+        String sql = "SELECT * from Pacote p, Usuario u WHERE p.cidade = ? AND p.estado = ? AND p.pais = ? AND p.cnpj = u.cnpj";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, cidade);
+            statement.setString(2, estado);
+            statement.setString(3, pais);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String cnpj = resultSet.getString("cnpj");
+                Date partida = resultSet.getDate("partida");
+                Integer duracao = resultSet.getInt("duracao");
+                Float valor = resultSet.getFloat("valor");
+                long agencia_id = resultSet.getLong(7);
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String agencia_nome = resultSet.getString(10);
+                String papel = resultSet.getString("papel");
+                String descricao = resultSet.getString("descricao");
+                Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
+                pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+
+    public List<Pacote> getPacotesPorPartida(String partida) {
+        Pacote pacote = null;
+
+        List<Pacote> lista = new ArrayList<>();
+
+        String sql = "SELECT * from Pacote p WHERE p.partida = ? AND p.cnpj = u.cnpj";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, partida);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Long id = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String cnpj = resultSet.getString("cnpj");
+                String cidade = resultSet.getString("cidade");
+                String estado = resultSet.getString("estado");
+                String pais = resultSet.getString("pais");
+                Date partidaData = resultSet.getDate("partida");
+                Integer duracao = resultSet.getInt("duracao");
+                Float valor = resultSet.getFloat("valor");
+                long agencia_id = resultSet.getLong(10);
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String agencia_nome = resultSet.getString(13);
+                String papel = resultSet.getString("papel");
+                String descricao = resultSet.getString("descricao");
+                Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
+                pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partidaData, duracao, valor);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
     }
 }
