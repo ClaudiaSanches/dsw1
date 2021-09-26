@@ -41,7 +41,7 @@
     <h3>Listagem de todos os pacotes turísticos em uma única página (não requer login). O sistema deve prover a funcionalidade de filtrar os pacotes turísticos por destino, por agência de turismo ou por data de partida.</h3>
 
     TODOS devem conseguir:
-        ONGOING - Listar os pacotes turísticos cadastrados no banco de dados
+        DONE - Listar os pacotes turísticos cadastrados no banco de dados
         TODO - Filtrar os pacotes por destino
         TODO - Filtrar os pacotes por agência
         TODO - Filtrar os pacotes por data de partida
