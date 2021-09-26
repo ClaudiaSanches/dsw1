@@ -39,19 +39,19 @@ insert into Usuario(email, senha, nome, papel, cpf, telefone, sexo, dNasc)
 	values ('cliente3@email.com', 'cliente3', 'Beltrano Barbosa', 'CLIENTE', '789123456-00', '(34) 97777-9999', 'M', '04/11/2002');
 
 insert into Usuario(email, senha, nome, papel, cnpj, descricao)
-	values ('agencia1@email.com', 'agencia1', 'Viagem+', 'AGENCIA', '13.444.222/0001-77', 'Agência de viagens');
+	values ('agencia1@email.com', 'agencia1', 'ViagemMais', 'AGENCIA', '13.444.222/0001-77', 'Agencia de viagens');
 
 insert into Usuario(email, senha, nome, papel, cnpj, descricao)
-	values ('agencia2@email.com', 'agencia2', 'Tour Viagens', 'AGENCIA', '52.333.111/0001-99', 'Organizamos sua viagem para você!!!');
+	values ('agencia2@email.com', 'agencia2', 'Tour Viagens', 'AGENCIA', '52.333.111/0001-99', 'Organizamos sua viagem para voce!!!');
 
 insert into Usuario(email, senha, nome, papel, cnpj, descricao)
 	values ('agencia3@email.com', 'agencia3', 'Turisticando', 'AGENCIA', '15.111.555/0001-00', 'Quer planejar sua viagem? Vem com a gente!!');
 
 insert into Pacote(nome, cnpj, cidade, estado, pais, partida, duracao, valor) 
-	values ('Pacote 1', '13.444.222/0001-77', 'São Paulo', 'São Paulo', 'Brasil', '12.10.2021', 5, 350.59);
+	values ('Pacote 1', '13.444.222/0001-77', 'Sao Paulo', 'Sao Paulo', 'Brasil', '2021-10-12', 5, 350.59);
 
 insert into Pacote(nome, cnpj, cidade, estado, pais, partida, duracao, valor) 
-	values ('Pacote 2', '15.111.555/0001-00', 'Camburiú', 'Santa Catarina', 'Brasil', '20.12.2021', 10, 942.50);
+	values ('Pacote 2', '15.111.555/0001-00', 'Balneario Camburiu', 'Santa Catarina', 'Brasil', '2021-12-08', 10, 942.50);
 
 disconnect;
 
