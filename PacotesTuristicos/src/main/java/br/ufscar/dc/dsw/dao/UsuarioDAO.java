@@ -190,6 +190,30 @@ public class UsuarioDAO extends GenericDAO {
         return listaAgencias;
     }
 
+    public List<String> getAllAgenciasPeloNome() {
+
+        List<String> listaAgencias = new ArrayList<>();
+
+        String sql = "SELECT nome from Usuario u WHERE papel = 'AGENCIA'";
+
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                listaAgencias.add(resultSet.getString("nome"));
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaAgencias;
+    }
+
     /* 
 		U -> update
 	   	Atualiza usuarios no banco de dados
