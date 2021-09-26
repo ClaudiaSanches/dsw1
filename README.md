@@ -42,9 +42,12 @@
 
     TODOS devem conseguir:
         DONE - Listar os pacotes turísticos cadastrados no banco de dados
-        TODO - Filtrar os pacotes por destino
-        TODO - Filtrar os pacotes por agência
-        TODO - Filtrar os pacotes por data de partida
+        DONE - Filtrar os pacotes por destino
+        DONE - Filtrar os pacotes por agência
+        DONE - Filtrar os pacotes por data de partida
+        
+    SE SOBRAR TEMPO:
+        TODO - Estado não está sendo mostrado
 
 <h2>R5:</h2> 
     <h3>Compra de pacote turístico (requer login do cliente via e-mail + senha). Ao clicar em um pacote turístico (requisito R4), o cliente pode efetuar a compra do pacote. O cliente e a agência de turismo devem ser informados (via e-mail) sobre a compra. Nesse caso, o sistema deve também informar um horário para uma reunião (via videoconferência) entre o cliente e a agência de turismo para acertar os detalhes da compra/venda do pacote turístico -- o link da videoconferência (google meet, zoom, etc) deve estar presente no corpo da mensagem enviada.</h3>
