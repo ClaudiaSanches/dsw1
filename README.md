@@ -31,7 +31,7 @@
     <h3>Cadastro de pacotes turísticos para venda (requer login da agência via e-mail + senha). Depois de fazer login, a agência de turismo pode cadastrar um pacote turístico para venda. O cadastro de pacotes turísticos deve possuir os seguintes dados: CNPJ da agência de turismo, destinos (cidade/estado/país), data de partida, duração (em dias), valor, fotos (no máximo 10 imagens) dos locais turísticos a serem visitados. Por fim, é necessária, no cadastro, a descrição (arquivo PDF) com o roteiro detalhado do pacote turístico.</h3>
 
     A AGENCIA deve conseguir:
-        ONGOING - Cadastrar pacotes turísticos
+        DONE - Cadastrar pacotes turísticos
 
     SE SOBRAR TEMPO:
         TODO - Adicionar fotos
@@ -66,8 +66,8 @@
     <h3>Listagem de todos os pacotes turísticos de uma agência de turismo (requer login da agência via e-mail + senha). Depois de fazer login, a agência pode visualizar todos os seus pacotes turísticos cadastrados. O sistema apenas deve prover a funcionalidade de filtrar apenas os pacotes "vigentes" -- com a data de partida posterior a data atual do sistema.</h3>
 
     A AGENCIA deve conseguir:
-        ONGOING - Listar todos os seus pacotes cadastrados
-        TODO - Filtrar os pacotes de acordo com a data de partida, entre vigentes e passados
+        DONE - Listar todos os seus pacotes cadastrados
+        DONE - Filtrar os pacotes de acordo com a data de partida, entre vigentes e passados
 
 <h2>R8:</h2> 
     <h3>O sistema deve ser internacionalizado em pelo menos dois idiomas: português + outro de sua escolha.</h3>
