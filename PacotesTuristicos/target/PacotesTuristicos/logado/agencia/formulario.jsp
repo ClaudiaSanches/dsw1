@@ -6,16 +6,26 @@
 <html>
 	<fmt:bundle basename="message">
 		<head>
-			<title><fmt:message key="form.trip"/></title>
+			<title><fmt:message key="agency.trip.insert"/></title>
 		</head>
 		<body>
 			<%
 				String contextPath = request.getContextPath().replace("/", "");
 			%>
+			<a href="/<%= contextPath %>/agencia"><fmt:message key="agency.title"/></a>
 			<div align="center">
-				<form action="insercao" method="post">
-					<%@include file="campos.jsp"%>
-				</form>
+				<c:choose>
+					<c:when test="${pacote == null}">
+						<form action="inserirPacote" method="post">
+							<%@include file="campos.jsp"%>
+						</form>
+					</c:when>
+					<c:otherwise>
+						<form action="atualizarPacote" method="post">
+							<%@include file="campos.jsp"%>
+						</form>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<h6><fmt:message key="required.fields"/></h6>
 			<c:if test="${!empty requestScope.mensagens}">

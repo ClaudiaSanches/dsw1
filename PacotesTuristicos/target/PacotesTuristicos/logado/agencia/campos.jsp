@@ -4,7 +4,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <table border="1">
-	<caption><fmt:message key="agency.table.title"/></caption>
+	<caption>
+		<c:choose>
+			<c:when test="${pacote != null}">
+				<fmt:message key="agency.trip.update"/>
+			</c:when>
+			<c:otherwise>
+				<fmt:message key="agency.trip.insert"/>
+			</c:otherwise>
+		</c:choose>
+	</caption>
+	<c:if test="${pacote != null}">
+		<input type="hidden" name="id" value="<c:out value='${pacote.id}' />" />
+	</c:if>
 	<tr>
 		<td><label for="nome"><fmt:message key="agency.table.name"/></label></td>
 		<td><input type="text" id="nome" name="nome" size="45" required value="${pacote.nome}" /></td>
