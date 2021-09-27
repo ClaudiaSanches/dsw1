@@ -91,7 +91,6 @@ public class PacoteDAO extends GenericDAO {
         return lista;
     }
 
-    // TALVEZ DE PRA TIRAR ESSE AQUI
     // Retorna todos os pacotes de uma agencia, dado o usuario logado
     public List<Pacote> getAllPacotesAgencia(Usuario usuario) {
 
@@ -108,6 +107,7 @@ public class PacoteDAO extends GenericDAO {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
+                long pacote_id = resultSet.getLong(1);
                 String nome = resultSet.getString("nome");
                 String cnpj = resultSet.getString("cnpj");
                 String cidade = resultSet.getString("cidade");
@@ -116,14 +116,13 @@ public class PacoteDAO extends GenericDAO {
                 Date partida = resultSet.getDate("partida");
                 Integer duracao = resultSet.getInt("duracao");
                 Float valor = resultSet.getFloat("valor");
-                long agencia_id = resultSet.getLong(10);
                 String email = resultSet.getString("email");
                 String senha = resultSet.getString("senha");
                 String agencia_nome = resultSet.getString(13);
                 String papel = resultSet.getString("papel");
                 String descricao = resultSet.getString("descricao");
-                Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
-                Pacote pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
+                Usuario agencia = new Usuario(id, email, senha, agencia_nome, papel, cnpj, descricao);
+                Pacote pacote = new Pacote(pacote_id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
                 lista.add(pacote);
             }
 
@@ -283,7 +282,7 @@ public class PacoteDAO extends GenericDAO {
 	   	Atualiza pacotes turisticos no banco de dados
 	*/
     public void update(Pacote pacote) {
-        String sql = "UPDATE Pacote SET nome = ?, cnpj = ?, cidade = ?, estado = ?, pais = ?, partida = ?, duracao = ?, valor = ?";
+        String sql = "UPDATE Pacote SET nome = ?, cnpj = ?, cidade = ?, estado = ?, pais = ?, partida = ?, duracao = ?, valor = ? WHERE id = ?";
 
         try {
             Connection conn = this.getConnection();
@@ -296,7 +295,8 @@ public class PacoteDAO extends GenericDAO {
             statement.setString(5, pacote.getPais());
             statement.setDate(6, pacote.getPartida());
             statement.setInt(7, pacote.getDuracao());
-            statement.setLong(8, pacote.getId());
+            statement.setFloat(8, pacote.getValor());
+            statement.setLong(9, pacote.getId());
             statement.executeUpdate();
 
             statement.close();
@@ -330,7 +330,7 @@ public class PacoteDAO extends GenericDAO {
     public Pacote get(Long id) {
         Pacote pacote = null;
 
-        String sql = "SELECT * from Pacote WHERE id = ?";
+        String sql = "SELECT * from Pacote p, Usuario u WHERE p.id = ? AND p.cnpj = u.cnpj";
 
         try {
             Connection conn = this.getConnection();
@@ -542,6 +542,52 @@ public class PacoteDAO extends GenericDAO {
                 String descricao = resultSet.getString("descricao");
                 Usuario agencia = new Usuario(agencia_id, email, senha, agencia_nome, papel, cnpj, descricao);
                 pacote = new Pacote(id, nome, agencia, cidade, estado, pais, partidaData, duracao, valor);
+            }
+
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
+
+    public List<Pacote> getAllPacotesVigentesAgencia(Usuario usuario) {
+
+        List<Pacote> lista = new ArrayList<>();
+
+        Date data = new java.sql.Date(System.currentTimeMillis());  
+
+        String sql = "SELECT * from Pacote p, Usuario u WHERE u.id = ? AND p.cnpj = u.cnpj AND p.partida > ?";
+
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            Long id = usuario.getId();
+
+            statement.setLong(1, id);
+            statement.setDate(2, data);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                long pacote_id = resultSet.getLong(1);
+                String nome = resultSet.getString("nome");
+                String cnpj = resultSet.getString("cnpj");
+                String cidade = resultSet.getString("cidade");
+                String estado = resultSet.getString("estado");
+                String pais = resultSet.getString("pais");
+                Date partida = resultSet.getDate("partida");
+                Integer duracao = resultSet.getInt("duracao");
+                Float valor = resultSet.getFloat("valor");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String agencia_nome = resultSet.getString(13);
+                String papel = resultSet.getString("papel");
+                String descricao = resultSet.getString("descricao");
+                Usuario agencia = new Usuario(id, email, senha, agencia_nome, papel, cnpj, descricao);
+                Pacote pacote = new Pacote(pacote_id, nome, agencia, cidade, estado, pais, partida, duracao, valor);
+                lista.add(pacote);
             }
 
             resultSet.close();

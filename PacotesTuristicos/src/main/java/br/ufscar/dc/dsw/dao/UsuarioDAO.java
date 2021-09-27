@@ -361,12 +361,23 @@ public class UsuarioDAO extends GenericDAO {
             statement.setString(1, email);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-            	Long id = resultSet.getLong("id");
+                Long id = resultSet.getLong("id");
                 String senha = resultSet.getString("senha");
                 String nome = resultSet.getString("nome");
                 String papel = resultSet.getString("papel");
-
-                usuario = new Usuario(id, email, senha, nome, papel);
+                if (papel.equals("ADMIN")) {
+                    usuario = new Usuario(id, email, senha, nome, papel);
+                } else if (papel.equals("CLIENTE")) {
+                    String cpf = resultSet.getString("cpf");
+                    String telefone = resultSet.getString("telefone");
+                    String sexo = resultSet.getString("sexo");
+                    String dNasc = resultSet.getString("dNasc");
+                    usuario = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, dNasc);
+                } else {
+                    String cnpj = resultSet.getString("cnpj");
+                    String descricao = resultSet.getString("descricao");
+                    usuario = new Usuario(id, email, senha, nome, papel, cnpj, descricao);
+                }
             }
 
             resultSet.close();
