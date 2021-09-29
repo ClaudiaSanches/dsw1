@@ -15,7 +15,7 @@ Trabalho desenvolvido por membro(s?) do Grupo 10, composto por:<br/>
 
 <p align="justify">O banco de dados possui três tabelas: <b>Usuario</b>, <b>Pacote</b> e <b>Compra</b>. Todas foram populadas com pelo menos cinco entradas. A tabela Usuario foi populada com usuários de três tipos diferentes de papéis: <b>ADMIN</b>, <b>CLIENTE</b> e <b>AGENCIA</b>. Cada usuário possui acesso a determinadas áreas de acordo com seu papel.</p>
 
-O sistema foi internacionalidade nos idiomas: português e inglês.
+O sistema foi internacionalizado nos idiomas: português e inglês.
 <br/><br/>
 
 <h2>Requisitos do sistema:<h2/>
