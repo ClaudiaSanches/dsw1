@@ -17,7 +17,8 @@
 			<a href="/<%=contextPath%>/admin/cadastroAgencia"><fmt:message key="admin.insert.agency.index"/></a><br/>
 			<a href="/<%=contextPath%>/admin/listaClientes"><fmt:message key="admin.list.client"/></a><br/>
 			<a href="/<%=contextPath%>/admin/listaAgencias"><fmt:message key="admin.list.agency"/></a><br/>
-			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a>
+			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a><br/>
+			<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
 		</body>
 	</fmt:bundle>
 </html>

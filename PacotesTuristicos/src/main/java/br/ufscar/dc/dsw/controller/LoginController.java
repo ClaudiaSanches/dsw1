@@ -13,7 +13,7 @@ import br.ufscar.dc.dsw.dao.UsuarioDAO;
 import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.util.Erro;
 
-@WebServlet(name = "Login", urlPatterns = { "/log.jsp", "/logout.jsp" })
+@WebServlet(name = "Login", urlPatterns = { "/log.jsp"})
 public class LoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

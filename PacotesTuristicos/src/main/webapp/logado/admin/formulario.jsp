@@ -12,7 +12,9 @@
 			<%
 				String contextPath = request.getContextPath().replace("/", "");
 			%>
-			<a href="/<%=contextPath%>/admin"><fmt:message key="admin.title"/></a>
+			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a><br/>
+			<a href="/<%=contextPath%>/admin"><fmt:message key="admin.title"/></a><br/>
+			<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
 			<div align="center">
 				<c:choose>
 					<c:when test="${!empty cliente && cliente == null || usuario.equals('cliente')}">

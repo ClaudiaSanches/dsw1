@@ -20,8 +20,22 @@
 			<%
 				String contextPath = request.getContextPath().replace("/", "");
 			%>
-			<a href="login.jsp"><fmt:message key="homepage.login"/></a><br/>
-			<a href="index.jsp"><fmt:message key="homepage"/></a>
+			<a href="/<%=contextPath%>/login.jsp"><fmt:message key="homepage.login"/></a><br/>
+			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a><br/>
+			<c:choose>
+				<c:when test="${sessionScope.usuarioLogado != null && sessionScope.usuarioLogado.papel == 'AGENCIA'}">
+					<a href="/<%=contextPath%>/agencia"><fmt:message key="agency.title"/></a><br/>
+					<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
+				</c:when>
+				<c:when test="${sessionScope.usuarioLogado != null && sessionScope.usuarioLogado.papel == 'CLIENTE'}">
+					<a href="/<%=contextPath%>/cliente"><fmt:message key="client.title"/></a><br/>
+					<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
+				</c:when>
+				<c:when test="${sessionScope.usuarioLogado != null && sessionScope.usuarioLogado.papel == 'ADMIN'}">
+					<a href="/<%=contextPath%>/admin"><fmt:message key="admin.title"/></a><br/>
+					<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
+				</c:when>
+			</c:choose>
 			<div align="center">
 				<h1><fmt:message key="trip.title"/></h1>
 			</div>

@@ -14,7 +14,8 @@
 			%>
 			<a href="/<%=contextPath%>/agencia/cadastroPacote"><fmt:message key="agency.insert"/></a><br/>
 			<a href="/<%=contextPath%>/agencia/listaPacotesAgencia"><fmt:message key="agency.list.trip"/></a><br/>
-			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a>
+			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a><br/>
+			<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
 		</body>
 	</fmt:bundle>
 </html>

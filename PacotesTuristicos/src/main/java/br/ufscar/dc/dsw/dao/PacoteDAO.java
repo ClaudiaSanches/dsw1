@@ -185,6 +185,9 @@ public class PacoteDAO extends GenericDAO {
 
         String[] destinoString = destino.split(","); 
         String cidade = destinoString[0];
+        if (cidade.contains("-")) {
+            cidade = cidade.split(" -")[0];
+        }
 
         String sql = "SELECT * from Pacote p, Usuario u WHERE p.cidade = ? AND p.cnpj = u.cnpj";
 
@@ -381,7 +384,12 @@ public class PacoteDAO extends GenericDAO {
                 String cidade = resultSet.getString("cidade");
                 String estado = resultSet.getString("estado");
                 String pais = resultSet.getString("pais");
-                String destino = cidade + ", " + estado + " - " + pais;
+                String destino = null;
+                if (estado == null) {
+                    destino = cidade + " - " + pais;
+                } else {
+                    destino = cidade + ", " + estado + " - " + pais;
+                }
                 lista.add(destino);
             }
 

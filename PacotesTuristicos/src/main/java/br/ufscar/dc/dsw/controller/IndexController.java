@@ -20,7 +20,7 @@ import br.ufscar.dc.dsw.dao.PacoteDAO;
 import br.ufscar.dc.dsw.domain.Pacote;
 import br.ufscar.dc.dsw.util.Erro;
 
-@WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/listaPacotes" })
+@WebServlet(name = "Index", urlPatterns = { "/index.jsp", "/logout/*", "/listaPacotes" })
 public class IndexController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -52,6 +52,8 @@ public class IndexController extends HttpServlet {
 
 		try {
 			switch (action) {
+				case "/logout":
+					logout(request, response);
 				default:
 					paginaInicial(request, response);
 					break;
@@ -89,5 +91,10 @@ public class IndexController extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/listaPacotes.jsp");
 		dispatcher.forward(request, response);
+	}
+
+	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getSession().removeAttribute("usuarioLogado");
+		paginaInicial(request, response);
 	}
 }
