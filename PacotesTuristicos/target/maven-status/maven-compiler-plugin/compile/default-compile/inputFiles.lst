@@ -1,5 +1,5 @@
+C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\dao\CompraDAO.java
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\domain\Usuario.java
-C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\fileUpload\Constants.java
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\controller\LoginController.java
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\dao\PacoteDAO.java
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\controller\IndexController.java
@@ -10,5 +10,6 @@ C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\ds
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\dao\UsuarioDAO.java
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\util\Erro.java
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\controller\ClienteController.java
-C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\fileUpload\UploadFileServlet.java
+C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\domain\Compra.java
+C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\controller\CompraController.java
 C:\Users\Claudia\Desktop\WEB1\T1\PacotesTuristicos\src\main\java\br\ufscar\dc\dsw\domain\Pacote.java

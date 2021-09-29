@@ -12,7 +12,9 @@
 			<%
 				String contextPath = request.getContextPath().replace("/", "");
 			%>
-			<a href="/<%= contextPath %>/agencia"><fmt:message key="agency.title"/></a>
+			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a><br>
+			<a href="/<%= contextPath %>/agencia"><fmt:message key="agency.title"/></a><br/>
+			<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
 			<div align="center">
 				<h1><fmt:message key="trip.title"/></h1>
 				<a href="/<%=contextPath%>/agencia/listaPacotesAgencia?vigentes=true"><fmt:message key="agency.list.next.trip"/></a><br/>
