@@ -42,6 +42,10 @@
 		<td><input type="text" id="sexo" name="sexo" size="45" required value="${cliente.sexo}" /></td>
 	</tr>
 	<tr>
+		<td><label for="nasc"><fmt:message key="admin.table.birth"/></label></td>
+		<td><input type="date" id="nasc" name="nasc" size="45" required value="${cliente.nasc}" /></td>
+	</tr>
+	<tr>
 		<td colspan="2" align="center"><input type="submit" value="<fmt:message key='save'/>" /></td>
 	</tr>
 </table>

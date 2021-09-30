@@ -17,7 +17,14 @@
 			<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
 			<div align="center">
 				<h1><fmt:message key="trip.title"/></h1>
-				<a href="/<%=contextPath%>/agencia/listaPacotesAgencia?vigentes=true"><fmt:message key="agency.list.next.trip"/></a><br/>
+				<c:choose>
+					<c:when test="${requestScope.vigentes}">
+						<a href="/<%=contextPath%>/agencia/listaPacotesAgencia?vigentes=false"><fmt:message key="agency.list.all.trip"/></a><br/><br/>
+					</c:when>
+					<c:otherwise>
+						<a href="/<%=contextPath%>/agencia/listaPacotesAgencia?vigentes=true"><fmt:message key="agency.list.next.trip"/></a><br/><br/>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<div align="center">
 				<table border="1">
