@@ -7,8 +7,8 @@ create table Usuario(id bigint not null generated always as identity,
 					 papel varchar(16) not null, 
 					 cpf varchar(32) unique,
 					 telefone varchar(32),
-					 sexo char(2), 
-					 dNasc varchar(16),
+					 sexo char(32), 
+					 nasc date,
 					 cnpj varchar(32) unique,
 					 descricao varchar(256),
 					 constraint Usuario_PK primary key (id));
@@ -37,14 +37,14 @@ create table Compra(id bigint not null generated always as identity,
 insert into Usuario(email, senha, nome, papel) 
 	values ('admin@gmail.com', 'admin', 'Admin', 'ADMIN');
 
-insert into Usuario(email, senha, nome, papel, cpf, telefone, sexo, dNasc) 
-	values ('cliente1@gmail.com', 'cliente1', 'Fulano da Silva', 'CLIENTE', '123456789-00', '(16) 94444-5555', 'M', '13/06/1999');
+insert into Usuario(email, senha, nome, papel, cpf, telefone, sexo, nasc) 
+	values ('cliente1@gmail.com', 'cliente1', 'Fulano da Silva', 'CLIENTE', '123456789-00', '(16) 94444-5555', 'Masculino', '1999-06-13');
 
-insert into Usuario(email, senha, nome, papel, cpf, telefone, sexo, dNasc)
-	values ('cliente2@gmail.com', 'cliente2', 'Ciclana de Souza', 'CLIENTE', '456789123-00', '(17) 98888-3333', 'F', '25/02/1987');
+insert into Usuario(email, senha, nome, papel, cpf, telefone, sexo, nasc)
+	values ('cliente2@gmail.com', 'cliente2', 'Ciclana de Souza', 'CLIENTE', '456789123-00', '(17) 98888-3333', 'Feminino', '1987-02-25');
 
-insert into Usuario(email, senha, nome, papel, cpf, telefone, sexo, dNasc)
-	values ('cliente3@gmail.com', 'cliente3', 'Beltrano Barbosa', 'CLIENTE', '789123456-00', '(34) 97777-9999', 'M', '04/11/2002');
+insert into Usuario(email, senha, nome, papel, cpf, telefone, sexo, nasc)
+	values ('cliente3@gmail.com', 'cliente3', 'Beltrano Barbosa', 'CLIENTE', '789123456-00', '(34) 97777-9999', 'Masculino', '2002-11-04');
 
 insert into Usuario(email, senha, nome, papel, cnpj, descricao)
 	values ('agencia1@gmail.com', 'agencia1', 'ViagemMais', 'AGENCIA', '13.444.222/0001-77', 'Agencia de viagens');
