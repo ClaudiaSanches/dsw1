@@ -14,7 +14,7 @@
 			%>
 			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a><br/>
 			<a href="/<%=contextPath%>/cliente"><fmt:message key="client.title"/></a><br/>
-			<a href="/<%=contextPath%>/logout"><fmt:message key="logout"/></a>
+			<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
 			<div align="center">
 				<h1><fmt:message key="client.trip.list"/></h1>
 				<h2>
