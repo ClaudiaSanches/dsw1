@@ -104,6 +104,7 @@ public class AgenciaController extends HttpServlet {
 			request.setAttribute("lista", listaPacotes);
 		}
 		
+		request.setAttribute("vigentes", vigentes);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/agencia/listaPacotes.jsp");
 		dispatcher.forward(request, response);
 	}

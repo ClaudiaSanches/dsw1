@@ -20,7 +20,6 @@
 			<%
 				String contextPath = request.getContextPath().replace("/", "");
 			%>
-			<a href="/<%=contextPath%>/login.jsp"><fmt:message key="homepage.login"/></a><br/>
 			<a href="/<%=contextPath%>/index.jsp"><fmt:message key="homepage"/></a><br/>
 			<c:choose>
 				<c:when test="${sessionScope.usuarioLogado != null && sessionScope.usuarioLogado.papel == 'AGENCIA'}">
@@ -35,6 +34,9 @@
 					<a href="/<%=contextPath%>/admin"><fmt:message key="admin.title"/></a><br/>
 					<a href="/<%=contextPath%>/logout/logout"><fmt:message key="logout"/></a>
 				</c:when>
+				<c:otherwise>
+					<a href="/<%=contextPath%>/login.jsp"><fmt:message key="homepage.login"/></a><br/>
+				</c:otherwise>
 			</c:choose>
 			<div align="center">
 				<h1><fmt:message key="trip.title"/></h1>

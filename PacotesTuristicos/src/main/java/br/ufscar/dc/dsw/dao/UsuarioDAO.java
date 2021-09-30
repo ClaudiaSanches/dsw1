@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Date;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class UsuarioDAO extends GenericDAO {
 
     public void insertCliente(Usuario usuario) {
 
-        String sql = "INSERT INTO Usuario (email, senha, nome, papel, cpf, telefone, sexo, dNasc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuario (email, senha, nome, papel, cpf, telefone, sexo, nasc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             Connection conn = this.getConnection();
@@ -56,7 +58,7 @@ public class UsuarioDAO extends GenericDAO {
             statement.setString(5, usuario.getCpf());
             statement.setString(6, usuario.getTelefone());
             statement.setString(7, usuario.getSexo());
-            statement.setString(8, usuario.getDNasc());
+            statement.setDate(8, usuario.getNasc());
             statement.executeUpdate();
 
             statement.close();
@@ -144,8 +146,8 @@ public class UsuarioDAO extends GenericDAO {
                 String cpf = resultSet.getString("cpf");
                 String telefone = resultSet.getString("telefone");
                 String sexo = resultSet.getString("sexo");
-                String dNasc = resultSet.getString("dNasc");
-                Usuario cliente = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, dNasc);
+                Date nasc = resultSet.getDate("nasc");
+                Usuario cliente = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, nasc);
                 listaClientes.add(cliente);
             }
 
@@ -240,7 +242,7 @@ public class UsuarioDAO extends GenericDAO {
     }
 
     public void updateCliente(Usuario usuario) {
-        String sql = "UPDATE Usuario SET email = ?, senha = ?, nome = ?, papel = ?, cpf = ?, telefone = ?, sexo = ?, dNasc = ? WHERE id = ?";
+        String sql = "UPDATE Usuario SET email = ?, senha = ?, nome = ?, papel = ?, cpf = ?, telefone = ?, sexo = ?, nasc = ? WHERE id = ?";
 
         try {
             Connection conn = this.getConnection();
@@ -253,7 +255,7 @@ public class UsuarioDAO extends GenericDAO {
             statement.setString(5, usuario.getCpf());
             statement.setString(6, usuario.getTelefone());
             statement.setString(7, usuario.getSexo());
-            statement.setString(8, usuario.getDNasc());
+            statement.setDate(8, usuario.getNasc());
             statement.setLong(9, usuario.getId());
             statement.executeUpdate();
 
@@ -330,8 +332,8 @@ public class UsuarioDAO extends GenericDAO {
                     String cpf = resultSet.getString("cpf");
                     String telefone = resultSet.getString("telefone");
                     String sexo = resultSet.getString("sexo");
-                    String dNasc = resultSet.getString("dNasc");
-                    usuario = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, dNasc);
+                    Date nasc = resultSet.getDate("nasc");
+                    usuario = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, nasc);
                 } else {
                     String cnpj = resultSet.getString("cnpj");
                     String descricao = resultSet.getString("descricao");
@@ -371,8 +373,8 @@ public class UsuarioDAO extends GenericDAO {
                     String cpf = resultSet.getString("cpf");
                     String telefone = resultSet.getString("telefone");
                     String sexo = resultSet.getString("sexo");
-                    String dNasc = resultSet.getString("dNasc");
-                    usuario = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, dNasc);
+                    Date nasc = resultSet.getDate("nasc");
+                    usuario = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, nasc);
                 } else {
                     String cnpj = resultSet.getString("cnpj");
                     String descricao = resultSet.getString("descricao");

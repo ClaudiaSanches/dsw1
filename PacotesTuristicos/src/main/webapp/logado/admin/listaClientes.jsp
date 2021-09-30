@@ -28,6 +28,7 @@
 						<th><fmt:message key="admin.list.cpf"/></th>
 						<th><fmt:message key="admin.list.phone"/></th>
 						<th><fmt:message key="admin.list.gender"/></th>
+						<th><fmt:message key="admin.list.birth"/></th>
 						<th><fmt:message key="actions"/></th>
 					</tr>
 					<c:forEach var="cliente" items="${requestScope.listaClientes}">
@@ -39,6 +40,7 @@
 							<td><c:out value="${cliente.cpf}" /></td>
 							<td><c:out value="${cliente.telefone}" /></td>
 							<td><c:out value="${cliente.sexo}" /></td>
+							<td><c:out value="${cliente.nasc}" /></td>
 							<td><a href="/<%= contextPath %>/admin/atualizaCliente?id=<c:out value='${cliente.id}'/>"><fmt:message key="edit"/></a> 
 	                        	&nbsp;&nbsp;&nbsp;&nbsp;
 	                            <a href="/<%= contextPath %>/admin/removeCliente?id=<c:out value='${cliente.id}'/>"

@@ -2,6 +2,8 @@ package br.ufscar.dc.dsw.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -122,10 +124,14 @@ public class AdminController extends HttpServlet {
 		String cpf = request.getParameter("cpf");
 		String telefone = request.getParameter("telefone");
 		String sexo = request.getParameter("sexo");
-		// String dNasc = request.getParameter("dNasc");
-		String dNasc = "...";
-		
-		Usuario cliente = new Usuario(email, senha, nome, papel, cpf, telefone, sexo, dNasc);
+		Date nasc = null;
+
+		try {
+			nasc = new java.sql.Date((new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("nasc"))).getTime());
+		} catch (Exception e) {
+		}
+
+		Usuario cliente = new Usuario(email, senha, nome, papel, cpf, telefone, sexo, nasc);
 
 		dao.insertCliente(cliente);
 		response.sendRedirect("listaClientes");
@@ -185,10 +191,14 @@ public class AdminController extends HttpServlet {
 		String cpf = request.getParameter("cpf");
 		String telefone = request.getParameter("telefone");
 		String sexo = request.getParameter("sexo");
-		// String dNasc = request.getParameter("dNasc");
-		String dNasc = "...";
+		Date nasc = null;
+
+		try {
+			nasc = new java.sql.Date((new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("nasc"))).getTime());
+		} catch (Exception e) {
+		}
 		
-		Usuario cliente = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, dNasc);
+		Usuario cliente = new Usuario(id, email, senha, nome, papel, cpf, telefone, sexo, nasc);
 
 		dao.updateCliente(cliente);
 		response.sendRedirect("listaClientes");

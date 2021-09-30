@@ -1,5 +1,7 @@
 package br.ufscar.dc.dsw.domain;
 
+import java.sql.Date;
+
 public class  Usuario {
 
 	// Atributos comuns a todos os usuarios
@@ -13,7 +15,7 @@ public class  Usuario {
 	private String cpf;
 	private String telefone;
 	private String sexo;
-	private String dNasc;
+	private Date nasc;
 
 	// Atributos exclusivos de usuarios do tipo AGENCIA
 	private String cnpj;
@@ -42,7 +44,7 @@ public class  Usuario {
 	}
 
 	/* Construtores CLIENTE */
-	public Usuario(String email, String senha, String nome, String papel, String cpf, String telefone, String sexo, String dNasc) {
+	public Usuario(String email, String senha, String nome, String papel, String cpf, String telefone, String sexo, Date nasc) {
 		super();
 		this.email = email;
 		this.senha = senha;
@@ -51,10 +53,10 @@ public class  Usuario {
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.sexo = sexo;
-		this.dNasc = dNasc;
+		this.nasc = nasc;
 	}
 
-	public Usuario(Long id, String email, String senha, String nome, String papel, String cpf, String telefone, String sexo, String dNasc) {
+	public Usuario(Long id, String email, String senha, String nome, String papel, String cpf, String telefone, String sexo, Date nasc) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -64,7 +66,7 @@ public class  Usuario {
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.sexo = sexo;
-		this.dNasc = dNasc;
+		this.nasc = nasc;
 	}
 
 	/* Construtores AGENCIA */
@@ -154,12 +156,12 @@ public class  Usuario {
 		this.sexo = sexo;
 	}
 
-	public String getDNasc() {
-		return dNasc;
+	public Date getNasc() {
+		return nasc;
 	}
 
-	public void setDNasc(String dNasc) {
-		this.dNasc = dNasc;
+	public void setNasc(Date nasc) {
+		this.nasc = nasc;
 	}
 
 	public String getCnpj() {
