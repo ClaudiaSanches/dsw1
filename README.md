@@ -10,10 +10,14 @@ Trabalho desenvolvido por membro(s?) do Grupo 10, composto por:<br/>
 <b>Tecnologias usadas:</b> Servlet, JSP, JSTL e JDBC<br/>
 <b>SGBD utilizado:</b> Derby<br/>
 <b>Nome do banco de dados:</b> PacotesTuristicos<br/>
-<b>Script de criação do banco de dados:</b> disponível em [dsw1/PacotesTuristicos/db/Derby/create.sql](https://github.com/AlainNgauthier/dsw1/blob/master/PacotesTuristicos/db/Derby/create.sql)<br/>
+<b>Script de criação do banco de dados:</b> disponível [aqui](https://github.com/AlainNgauthier/dsw1/blob/master/PacotesTuristicos/db/Derby/create.sql)<br/>
 <br/>
 
-<p align="justify">O banco de dados possui três tabelas: <b>Usuario</b>, <b>Pacote</b> e <b>Compra</b>. Todas foram populadas com pelo menos cinco entradas. A tabela Usuario foi populada com usuários de três tipos diferentes de papéis: <b>ADMIN</b>, <b>CLIENTE</b> e <b>AGENCIA</b>. Cada usuário possui acesso a determinadas áreas de acordo com seu papel.</p>
+<p align="justify">O banco de dados possui três tabelas: <b>Usuario</b>, <b>Pacote</b> e <b>Compra</b>. Todas foram populadas com pelo menos cinco entradas. A tabela Usuario foi populada com usuários de três tipos diferentes de papéis: <b>ADMIN</b>, <b>CLIENTE</b> e <b>AGENCIA</b>. Cada usuário possui acesso a determinadas áreas de acordo com seu papel. Algumas credenciais para teste do sistema:</p>
+
+- Papel: ADMIN | Credenciais -> admin@gmail.com:admin
+- Papel: CLIENTE | Credenciais -> cliente1@gmail.com:cliente1
+- Papel: AGENCIA | Credenciais -> agencia1@gmail.com:agencia1
 
 O sistema foi internacionalizado nos idiomas: português e inglês.
 <br/><br/>
