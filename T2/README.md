@@ -4,7 +4,7 @@ Trabalho desenvolvido por:<br/>
 - Claudia Rincon Sanches
 <br/>
 
-<b>Sistema:</b> Compra e venda de pacotes turísticos (B1)<br/>
+<b>Sistema:</b> Compra e venda de pacotes turísticos (B)<br/>
 <b>Tecnologias usadas:</b> Spring MVC, Spring Data JPA, Spring Security & Thymeleaf<br/>
 <b>SGBD utilizado:</b> Derby<br/>
 <b>Nome do banco de dados:</b> PacotesTuristicos<br/>
@@ -12,9 +12,9 @@ Trabalho desenvolvido por:<br/>
 
 <p align="justify">Credenciais para login no sistema:</p>
 
-- Papel: ADMIN | Credenciais -> admin@gmail.com:admin
-- Papel: CLIENTE | Credenciais -> cliente1@gmail.com:cliente1
-- Papel: AGENCIA | Credenciais -> agencia1@gmail.com:agencia1
+- Papel: ADMIN | Credenciais -> admin2@gmail.com:admin2
+- Papel: CLIENTE | Credenciais -> clienteNovo@gmail.com:clienteNovo
+- Papel: AGENCIA | Credenciais -> agenciaNova@gmail.com:agenciaNova
 
 O sistema foi internacionalizado nos idiomas: português e inglês.
 <br/><br/>
