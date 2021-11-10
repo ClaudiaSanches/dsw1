@@ -33,7 +33,7 @@ public class Usuario extends AbstractEntity<Long> {
     @Column(nullable = false, length = 16)
     private String papel;
     
-    @Column(nullable = true, length = 32, unique = true)
+    @Column(nullable = true, length = 32)
     private String cpf;
 
     @Column(nullable = true, length = 32)
