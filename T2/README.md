@@ -14,7 +14,6 @@ Trabalho desenvolvido por:<br/>
 
 - Papel: ADMIN | Credenciais -> admin2@gmail.com:admin2
 - Papel: CLIENTE | Credenciais -> clienteNovo@gmail.com:clienteNovo
-- Papel: AGENCIA | Credenciais -> agenciaNova@gmail.com:agenciaNova
 
 O sistema foi internacionalizado nos idiomas: português e inglês.
 <br/><br/>
@@ -47,6 +46,6 @@ O sistema foi internacionalizado nos idiomas: português e inglês.
 
 <h3 align="justify">R9: O sistema deve validar (tamanho, formato, etc) todas as informações (campos nos formulários) cadastradas e/ou editadas.</h3>  
 
-    ( ) Totalmente implementado
+    (X) Totalmente implementado
     ( ) Parcialmente implementado
     ( ) Não implementado
