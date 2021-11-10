@@ -19,7 +19,7 @@ O sistema foi internacionalizado nos idiomas: português e inglês.
 <br/><br/>
 
 <h2>Requisitos do sistema:<h2/>
-
+    
 <h3 align="justify">R1: CRUD de clientes (requer login de administrador).</h3> 
     
     (X) Totalmente implementado
