@@ -26,7 +26,7 @@ public class Compra extends AbstractEntity<Long> {
 	@Column(columnDefinition = "DECIMAL(8,2) DEFAULT 0.0")
 	private BigDecimal valor;
     
-	@NotNull
+	@NotNull(message = "{NotNull.compra.pacote}")
 	@ManyToOne
 	@JoinColumn(name = "pacote_id")
 	private Pacote pacote;

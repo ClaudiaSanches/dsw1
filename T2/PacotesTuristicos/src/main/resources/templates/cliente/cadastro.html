@@ -78,9 +78,9 @@
 						<div class="form-group col-md-6">
 							<label th:text="#{cliente.tel.label}" for="telefone"></label> 
 							<input type="text" class="form-control" id="telefone" th:field="*{telefone}"
-								autofocus="autofocus" placeholder="(__)_____-____"
+								autofocus="autofocus" placeholder="(__) _____-____"
 								th:classappend="${#fields.hasErrors('telefone')} ? is-invalid" 
-								data-mask="(00)00000-0000" data-mask-reverse="true" />
+								data-mask="(00) 00000-0000" data-mask-reverse="true" />
 								
 							<div class="invalid-feedback">
 								<span th:errors="*{telefone}"></span>

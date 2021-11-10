@@ -2,6 +2,7 @@ package br.ufscar.dc.dsw.domain;
 
 import java.sql.Date;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -19,10 +24,12 @@ import javax.validation.constraints.NotBlank;
 public class Usuario extends AbstractEntity<Long> {
   
 	@NotBlank
+	@Email
     @Column(nullable = false, length = 64, unique = true)
     private String email;
     
 	@NotBlank
+	@Size(min = 8, max = 100, message = "{Size.cliente.senha}")
     @Column(nullable = false, length = 64)
     private String senha;
        
@@ -33,15 +40,18 @@ public class Usuario extends AbstractEntity<Long> {
     @Column(nullable = false, length = 16)
     private String papel;
     
-    @Column(nullable = true, length = 32)
+    @Size(min = 14, max = 14, message = "{Size.cliente.cpf}")
+    @Column(nullable = true, length = 32, unique = true)
     private String cpf;
 
-    @Column(nullable = true, length = 32)
+    @Size(min = 15, max = 15, message = "{Size.cliente.telefone}")
+    @Column(nullable = true, length = 16)
     private String telefone;
 
     @Column(nullable = true, length = 32)
     private String sexo;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = true)
     private Date nasc;
 
