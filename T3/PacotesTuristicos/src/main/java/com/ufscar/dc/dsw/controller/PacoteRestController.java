@@ -125,53 +125,21 @@ public class PacoteRestController {
 		return ResponseEntity.ok(lista);
 	}
 	
-	// @PostMapping(path = "/livros")
-	// @ResponseBody
-	// public ResponseEntity<Livro> cria(@RequestBody JSONObject json) {
-	// 	try {
-	// 		if (isJSONValid(json.toString())) {
-	// 			Livro livro = new Livro();
-	// 			parse(livro, json);
-	// 			service.salvar(livro);
-	// 			return ResponseEntity.ok(livro);
-	// 		} else {
-	// 			return ResponseEntity.badRequest().body(null);
-	// 		}
-	// 	} catch (Exception e) {
-	// 		e.printStackTrace();
-	// 		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
-	// 	}
-	// }
-
-	// @PutMapping(path = "/livros/{id}")
-	// public ResponseEntity<Livro> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
-	// 	try {
-	// 		if (isJSONValid(json.toString())) {
-	// 			Livro livro = service.buscarPorId(id);
-	// 			if (livro == null) {
-	// 				return ResponseEntity.notFound().build();
-	// 			} else {
-	// 				parse(livro, json);
-	// 				service.salvar(livro);
-	// 				return ResponseEntity.ok(livro);
-	// 			}
-	// 		} else {
-	// 			return ResponseEntity.badRequest().body(null);
-	// 		}
-	// 	} catch (Exception e) {
-	// 		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
-	// 	}
-	// }
-
-	// @DeleteMapping(path = "/livros/{id}")
-	// public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
-
-	// 	Livro livro = service.buscarPorId(id);
-	// 	if (livro == null) {
-	// 		return ResponseEntity.notFound().build();
-	// 	} else {
-	// 		service.excluir(id);
-	// 		return ResponseEntity.noContent().build();
-	// 	}
-	// }
+	@PostMapping(path = "/pacotes/agencias/{id}")
+	@ResponseBody
+	public ResponseEntity<Pacote> cria(@RequestBody JSONObject json) {
+		try {
+			if (isJSONValid(json.toString())) {
+				Pacote pacote = new Pacote();
+				parse(pacote, json);
+				service.salvar(pacote);
+				return ResponseEntity.ok(pacote);
+			} else {
+				return ResponseEntity.badRequest().body(null);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(null);
+		}
+	}
 }

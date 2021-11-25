@@ -24,7 +24,7 @@ import br.ufscar.dc.dsw.domain.Usuario;
 import br.ufscar.dc.dsw.service.spec.IUsuarioService;
 
 @RestController
-public class ClienteRestController {
+public class AgenciaRestController {
 
 	@Autowired
  	private IUsuarioService service;
@@ -37,62 +37,52 @@ public class ClienteRestController {
 		}
  	}
 
-	private void parse(Usuario cliente, JSONObject json) {
+	private void parse(Usuario agencia, JSONObject json) {
 		
 		Object id = json.get("id");
 		if (id != null) {
 			if (id instanceof Integer) {
-				cliente.setId(((Integer) id).longValue());
+				agencia.setId(((Integer) id).longValue());
 			} else {
-				cliente.setId((Long) id);
+				agencia.setId((Long) id);
 			}
  	    	}
 
- 	    	cliente.setEmail((String) json.get("email"));
- 	    	cliente.setSenha((String) json.get("senha"));
-        	cliente.setNome((String) json.get("nome"));
-        	cliente.setPapel((String) json.get("papel"));
-        	cliente.setCpf((String) json.get("cpf"));
-        	cliente.setTelefone((String) json.get("telefone"));
-        	cliente.setSexo((String) json.get("sexo"));
-
-        	Date nasc = null;
-
-		try {
-			nasc = new java.sql.Date((new SimpleDateFormat("yyyy-MM-dd").parse((String) json.get("nasc"))).getTime());
-		} catch (Exception e) {
-		}
-
-        	cliente.setNasc(nasc);
+ 	    	agencia.setEmail((String) json.get("email"));
+ 	    	agencia.setSenha((String) json.get("senha"));
+        	agencia.setNome((String) json.get("nome"));
+        	agencia.setPapel((String) json.get("papel"));
+        	agencia.setCnpj((String) json.get("cnpj"));
+        	agencia.setDescricao((String) json.get("descricao"));
  	}
 
-	@GetMapping(path = "/clientes")
+	@GetMapping(path = "/agencias")
 	public ResponseEntity<List<Usuario>> lista() {
-		List<Usuario> lista = service.buscarTodosClientes();
+		List<Usuario> lista = service.buscarTodasAgencias();
 		if (lista.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
  	}
 
-	@GetMapping(path = "/clientes/{id}")
+	@GetMapping(path = "/agencias/{id}")
 	public ResponseEntity<Usuario> lista(@PathVariable("id") long id) {
-		Usuario cliente = service.buscarPorId(id);
-		if (cliente == null) {
+		Usuario agencia = service.buscarPorId(id);
+		if (agencia == null) {
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(cliente);
+		return ResponseEntity.ok(agencia);
  	}
 
-	@PostMapping(path = "/clientes")
+	@PostMapping(path = "/agencias")
 	@ResponseBody
 	public ResponseEntity<Usuario> cria(@RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
-				Usuario cliente = new Usuario();
-				parse(cliente, json);
-				service.salvar(cliente);
-				return ResponseEntity.ok(cliente);
+				Usuario agencia = new Usuario();
+				parse(agencia, json);
+				service.salvar(agencia);
+				return ResponseEntity.ok(agencia);
 			} else {
 				return ResponseEntity.badRequest().body(null);
 			}
@@ -102,17 +92,17 @@ public class ClienteRestController {
 		}
  	}
 
-	@PutMapping(path = "/clientes/{id}")
+	@PutMapping(path = "/agencias/{id}")
 	public ResponseEntity<Usuario> atualiza(@PathVariable("id") long id, @RequestBody JSONObject json) {
 		try {
 			if (isJSONValid(json.toString())) {
-				Usuario cliente = service.buscarPorId(id);
-				if (cliente == null) {
+				Usuario agencia = service.buscarPorId(id);
+				if (agencia == null) {
 					return ResponseEntity.notFound().build();
 				} else {
-					parse(cliente, json);
-					service.salvar(cliente);
-					return ResponseEntity.ok(cliente);
+					parse(agencia, json);
+					service.salvar(agencia);
+					return ResponseEntity.ok(agencia);
 				}
 			} else {
 				return ResponseEntity.badRequest().body(null);
@@ -122,11 +112,11 @@ public class ClienteRestController {
 		}
  	}
 
-	@DeleteMapping(path = "/clientes/{id}")
+	@DeleteMapping(path = "/agencias/{id}")
  	public ResponseEntity<Boolean> remove(@PathVariable("id") long id) {
 
-        	Usuario cliente = service.buscarPorId(id);
-		if (cliente == null) {
+        	Usuario agencia = service.buscarPorId(id);
+		if (agencia == null) {
 			return ResponseEntity.notFound().build();
 		} else {
 			service.excluir(id);

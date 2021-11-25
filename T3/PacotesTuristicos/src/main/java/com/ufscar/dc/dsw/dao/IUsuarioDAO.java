@@ -22,4 +22,7 @@ public interface IUsuarioDAO extends CrudRepository<Usuario, Long> {
 
     @Query("SELECT u FROM Usuario u WHERE u.papel = 'CLIENTE'")
 	List<Usuario> findAllClientes();
+
+	@Query("SELECT u FROM Usuario u WHERE u.papel = 'AGENCIA'")
+	List<Usuario> findAllAgencias();
 }

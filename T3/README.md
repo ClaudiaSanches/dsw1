@@ -20,9 +20,9 @@ Trabalho desenvolvido por:<br/>
 
 <h3 align="justify">R2: CRUD de agências de turismo.</h3> 
 
-    ( ) Totalmente implementado
+    (X) Totalmente implementado
     ( ) Parcialmente implementado
-    (X) Não implementado
+    ( ) Não implementado
 
 <h3 align="justify">R3: Retorna a lista de pacotes turísticos.</h3>  
 
@@ -30,7 +30,7 @@ Trabalho desenvolvido por:<br/>
     ( ) Parcialmente implementado
     ( ) Não implementado
 
-<h3 align="justify">R4: Retorna a lista de pacotes turísticos de do cliente de id = {id}.</h3> 
+<h3 align="justify">R4: Retorna a lista de pacotes turísticos do cliente de id = {id}.</h3> 
 
     (X) Totalmente implementado
     ( ) Parcialmente implementado
@@ -38,9 +38,9 @@ Trabalho desenvolvido por:<br/>
 
 <h3 align="justify">R5: Cria um novo pacote turístico na agência de id = {id}.</h3>  
 
-    ( ) Totalmente implementado
+    (X) Totalmente implementado
     ( ) Parcialmente implementado
-    (X) Não implementado
+    ( ) Não implementado
 
 <h3 align="justify">R6: Retorna a lista de pacotes turísticos da agência de id = {id}.</h3>  
 

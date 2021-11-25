@@ -34,4 +34,9 @@ public class UsuarioService implements IUsuarioService {
 	public List<Usuario> buscarTodosClientes() {
 		return dao.findAllClientes();
 	}
+
+	@Transactional(readOnly = true)
+	public List<Usuario> buscarTodasAgencias() {
+		return dao.findAllAgencias();
+	}
 }
